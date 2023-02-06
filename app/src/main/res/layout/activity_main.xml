@@ -13,33 +13,49 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:animateLayoutChanges="true"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ScooterName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter scooter name" />
+                android:drawableStart="@drawable/baseline_electric_scooter_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/purple_700"
+                android:hint="Enter scooter name"
+                android:selectAllOnFocus="false"
+                android:singleLine="false" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ScooterLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            app:endIconMode="clear_text"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableStart="@drawable/baseline_location_on_24"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/purple_700"
                 android:hint="Enter scooter location" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,6 +64,8 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/button"
             android:text="Start ride" />
 
     </LinearLayout>
