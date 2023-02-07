@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     // GUI variables .
-    private lateinit var scooterName: EditText
-    private lateinit var scooterLocation: EditText
+    private lateinit var scooterName: TextInputEditText
+    private lateinit var scooterLocation: TextInputEditText
     private lateinit var startRideButton: Button
     private val scooter: Scooter = Scooter("", "")
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         // Buttons
         startRideButton = findViewById(R.id.button)
         startRideButton.setOnClickListener {
-            if (scooterName.text.isNotEmpty() && scooterLocation.text.isNotEmpty()) {
+            if (scooterName.text!!.isNotEmpty() && scooterLocation.text!!.isNotEmpty()) {
 
                 // Update the object attributes
                 val name = scooterName.text.toString().trim()
@@ -46,8 +46,8 @@ class MainActivity : AppCompatActivity() {
                 scooter.setLocation(location)
 
                 // Reset the text fields and update the UI.
-                scooterName.text.clear()
-                scooterLocation.text.clear()
+                scooterName.text!!.clear()
+                scooterLocation.text!!.clear()
                 showMessage()
             }
         }
