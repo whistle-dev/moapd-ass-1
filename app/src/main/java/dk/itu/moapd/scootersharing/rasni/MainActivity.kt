@@ -1,9 +1,10 @@
 package dk.itu.moapd.scootersharing.rasni
 
+import android.content.Intent
 import android.graphics.Rect
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -35,52 +36,6 @@ class MainActivity : AppCompatActivity() {
         val view = mainBinding.root
         setContentView(view)
 
-
-
-
-       with(mainBinding) {
-            Button.setOnClickListener {
-                if (ScooterName.text!!.isNotEmpty() && ScooterLocation.text!!.isNotEmpty()) {
-
-                    // Update the object attributes
-                    val name = ScooterName.text.toString().trim()
-                    val location = ScooterLocation.text.toString().trim()
-
-                    scooter.name = name
-                    scooter.location = location
-
-                    // Reset the text fields and update the UI.
-                    ScooterName.text!!.clear()
-                    ScooterLocation.text!!.clear()
-
-                    showMessage()
-                }
-            }
-        }
-
     }
 
-    // Print a message in the ‘Logcat ‘ system
-    private fun showMessage() {
-        val snack = Snackbar.make(mainBinding.root, scooter.toString(), Snackbar.LENGTH_LONG)
-        snack.animationMode = Snackbar.ANIMATION_MODE_SLIDE
-        snack.show()
-    }
-
-    // Gesture Detector to remove the focus from the text fields
-    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-        if (event.action == MotionEvent.ACTION_DOWN) {
-            val v = currentFocus
-            if (v is TextInputEditText) {
-                val outRect = Rect()
-                v.getGlobalVisibleRect(outRect)
-                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-                    v.clearFocus()
-                    val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
-                }
-            }
-        }
-        return super.dispatchTouchEvent(event)
-    }
 }
