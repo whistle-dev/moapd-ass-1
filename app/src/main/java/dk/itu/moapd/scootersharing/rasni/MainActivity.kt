@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
+import dk.itu.moapd.scootersharing.rasni.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     // A set of private constants used in this class .
@@ -18,44 +20,51 @@ class MainActivity : AppCompatActivity() {
     }
 
     // GUI variables .
-    private lateinit var scooterName: TextInputEditText
-    private lateinit var scooterLocation: TextInputEditText
-    private lateinit var startRideButton: Button
     private val scooter: Scooter = Scooter("", "")
+
+    // The binding object instance that is associated with this activity.
+    private lateinit var mainBinding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        // Initialize the binding object instance associated with this activity.
+        mainBinding = ActivityMainBinding.inflate(layoutInflater)
+        val view = mainBinding.root
+        setContentView(view)
 
 
-        // Edit texts
-        scooterName = findViewById(R.id.ScooterName)
-        scooterLocation = findViewById(R.id.ScooterLocation)
 
 
-        // Buttons
-        startRideButton = findViewById(R.id.button)
-        startRideButton.setOnClickListener {
-            if (scooterName.text!!.isNotEmpty() && scooterLocation.text!!.isNotEmpty()) {
+       with(mainBinding) {
+            Button.setOnClickListener {
+                if (ScooterName.text!!.isNotEmpty() && ScooterLocation.text!!.isNotEmpty()) {
 
-                // Update the object attributes
-                val name = scooterName.text.toString().trim()
-                val location = scooterLocation.text.toString().trim()
-                scooter.setName(name)
-                scooter.setLocation(location)
+                    // Update the object attributes
+                    val name = ScooterName.text.toString().trim()
+                    val location = ScooterLocation.text.toString().trim()
 
-                // Reset the text fields and update the UI.
-                scooterName.text!!.clear()
-                scooterLocation.text!!.clear()
-                showMessage()
+                    scooter.name = name
+                    scooter.location = location
+
+                    // Reset the text fields and update the UI.
+                    ScooterName.text!!.clear()
+                    ScooterLocation.text!!.clear()
+
+                    showMessage()
+                }
             }
         }
+
     }
 
     // Print a message in the ‘Logcat ‘ system
     private fun showMessage() {
-        Log.d(TAG, scooter.toString())
+        val snack = Snackbar.make(mainBinding.root, scooter.toString(), Snackbar.LENGTH_LONG)
+        snack.animationMode = Snackbar.ANIMATION_MODE_SLIDE
+        snack.show()
     }
 
     // Gesture Detector to remove the focus from the text fields

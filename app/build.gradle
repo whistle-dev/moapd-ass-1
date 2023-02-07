@@ -7,6 +7,10 @@ android {
     namespace 'dk.itu.moapd.scootersharing.rasni'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "dk.itu.moapd.scootersharing.rasni"
         minSdk 24
