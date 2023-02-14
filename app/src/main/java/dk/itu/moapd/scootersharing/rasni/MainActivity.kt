@@ -1,16 +1,10 @@
 package dk.itu.moapd.scootersharing.rasni
 
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import dk.itu.moapd.scootersharing.rasni.databinding.ActivityMainBinding
 
 
@@ -18,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     // A set of private constants used in this class .
     companion object {
         private val TAG = MainActivity::class.qualifiedName
+        lateinit var ridesDB: RidesDB
     }
 
     // GUI variables .
@@ -31,8 +26,13 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
+        // Singleton to share an object between the app activities .
+        ridesDB = RidesDB.get(this)
+
         // Initialize the binding object instance associated with this activity.
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
+
+
 
         with(mainBinding) {
             // Start ride click event
@@ -45,6 +45,10 @@ class MainActivity : AppCompatActivity() {
             updateRide.setOnClickListener {
                 val intent = Intent(this@MainActivity, UpdateRideActivity::class.java)
                 startActivity(intent)
+            }
+            listRides.setOnClickListener {
+
+                //TODO: list rides in a listview when pressed
             }
         }
 

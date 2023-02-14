@@ -15,6 +15,7 @@ class StartRideActivity : AppCompatActivity() {
     // A set of private constants used in this class .
     companion object {
         private val TAG = StartRideActivity::class.qualifiedName
+        lateinit var ridesDB: RidesDB
     }
 
     // GUI variables .
@@ -27,6 +28,10 @@ class StartRideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+
+        // Singleton to share an object between the app activities .
+        ridesDB = RidesDB.get(this)
+
 
         // Initialize the binding object instance associated with this activity.
         mainBinding = ActivityStartRideBinding.inflate(layoutInflater)
