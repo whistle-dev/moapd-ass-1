@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".`MainActivity.kt`">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,61 +14,64 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:animateLayoutChanges="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:gravity="center">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:endIconMode="clear_text"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:text="Scooter Sharing"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:layout_margin="20dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ScooterName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/baseline_electric_scooter_24"
-                android:drawablePadding="10dp"
-                android:drawableTint="@color/purple_700"
-                android:hint="Enter scooter name"
-                android:selectAllOnFocus="false"
-                android:singleLine="false" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            app:endIconMode="clear_text"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ScooterLocation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/baseline_location_on_24"
-                android:drawablePadding="10dp"
-                android:drawableTint="@color/purple_700"
-                android:hint="Enter scooter location" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/Button"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/start_ride"
             style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:background="@drawable/button"
-            android:text="Start ride" />
+            android:text="@string/start_ride_button"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginStart="60dp"
+            app:icon="@drawable/baseline_play_arrow_24"
+            app:iconGravity="textStart" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_ride"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="@string/start_update_button"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginStart="60dp"
+            android:textAlignment="center"
+            app:icon="@drawable/baseline_edit_24"
+            app:iconGravity="textStart"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/list_rides"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/button"
+            android:text="@string/list_rides_button"
+            android:textAlignment="center"
+            app:icon="@drawable/baseline_list_24"
+            app:iconGravity="textStart" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

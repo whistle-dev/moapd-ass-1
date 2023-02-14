@@ -1,15 +1,10 @@
 package dk.itu.moapd.scootersharing.rasni
 
-import android.graphics.Rect
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.MotionEvent
-import android.view.inputmethod.InputMethodManager
-import android.widget.Button
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.textfield.TextInputEditText
 import dk.itu.moapd.scootersharing.rasni.databinding.ActivityMainBinding
 
 
@@ -17,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     // A set of private constants used in this class .
     companion object {
         private val TAG = MainActivity::class.qualifiedName
+        lateinit var ridesDB: RidesDB
     }
 
     // GUI variables .
@@ -30,57 +26,35 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
+        // Singleton to share an object between the app activities .
+        ridesDB = RidesDB.get(this)
+
         // Initialize the binding object instance associated with this activity.
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
+
+
+
+        with(mainBinding) {
+            // Start ride click event
+            startRide.setOnClickListener {
+                val intent = Intent(this@MainActivity, StartRideActivity::class.java.apply {
+                    intent.putExtra("scooter", "scooter")
+                })
+                startActivity(intent)
+            }
+            updateRide.setOnClickListener {
+                val intent = Intent(this@MainActivity, UpdateRideActivity::class.java)
+                startActivity(intent)
+            }
+            listRides.setOnClickListener {
+
+                //TODO: list rides in a listview when pressed
+            }
+        }
+
         val view = mainBinding.root
         setContentView(view)
 
-
-
-
-       with(mainBinding) {
-            Button.setOnClickListener {
-                if (ScooterName.text!!.isNotEmpty() && ScooterLocation.text!!.isNotEmpty()) {
-
-                    // Update the object attributes
-                    val name = ScooterName.text.toString().trim()
-                    val location = ScooterLocation.text.toString().trim()
-
-                    scooter.name = name
-                    scooter.location = location
-
-                    // Reset the text fields and update the UI.
-                    ScooterName.text!!.clear()
-                    ScooterLocation.text!!.clear()
-
-                    showMessage()
-                }
-            }
-        }
-
     }
 
-    // Print a message in the ‘Logcat ‘ system
-    private fun showMessage() {
-        val snack = Snackbar.make(mainBinding.root, scooter.toString(), Snackbar.LENGTH_LONG)
-        snack.animationMode = Snackbar.ANIMATION_MODE_SLIDE
-        snack.show()
-    }
-
-    // Gesture Detector to remove the focus from the text fields
-    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
-        if (event.action == MotionEvent.ACTION_DOWN) {
-            val v = currentFocus
-            if (v is TextInputEditText) {
-                val outRect = Rect()
-                v.getGlobalVisibleRect(outRect)
-                if (!outRect.contains(event.rawX.toInt(), event.rawY.toInt())) {
-                    v.clearFocus()
-                    val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0)
-                }
-            }
-        }
-        return super.dispatchTouchEvent(event)
-    }
 }
