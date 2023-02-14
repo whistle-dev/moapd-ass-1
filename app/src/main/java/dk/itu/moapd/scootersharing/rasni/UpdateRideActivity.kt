@@ -8,21 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import dk.itu.moapd.scootersharing.rasni.databinding.ActivityMainBinding
-import dk.itu.moapd.scootersharing.rasni.databinding.ActivityStartRideBinding
+import dk.itu.moapd.scootersharing.rasni.databinding.ActivityUpdateRideBinding
 
 
-class ActivityRide : AppCompatActivity() {
+class UpdateRideActivity : AppCompatActivity() {
     // A set of private constants used in this class .
     companion object {
-        private val TAG = ActivityRide::class.qualifiedName
+        private val TAG = UpdateRideActivity::class.qualifiedName
     }
 
     // GUI variables .
     private val scooter: Scooter = Scooter("", "")
 
     // The binding object instance that is associated with this activity.
-    private lateinit var mainBinding: ActivityStartRideBinding
+    private lateinit var mainBinding: ActivityUpdateRideBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +29,8 @@ class ActivityRide : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Initialize the binding object instance associated with this activity.
-        mainBinding = ActivityStartRideBinding.inflate(layoutInflater)
+        mainBinding = ActivityUpdateRideBinding.inflate(layoutInflater)
+        mainBinding.ScooterName.setText(intent.getStringExtra("scooter"))
         val view = mainBinding.root
         setContentView(view)
 

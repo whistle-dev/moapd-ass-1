@@ -33,6 +33,21 @@ class MainActivity : AppCompatActivity() {
 
         // Initialize the binding object instance associated with this activity.
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
+
+        with(mainBinding) {
+            // Start ride click event
+            startRide.setOnClickListener {
+                val intent = Intent(this@MainActivity, StartRideActivity::class.java.apply {
+                    intent.putExtra("scooter", "scooter")
+                })
+                startActivity(intent)
+            }
+            updateRide.setOnClickListener {
+                val intent = Intent(this@MainActivity, UpdateRideActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
         val view = mainBinding.root
         setContentView(view)
 

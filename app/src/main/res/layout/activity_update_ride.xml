@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityUpdate">
+    tools:context=".UpdateRideActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +41,10 @@
                 android:hint="@string/scooter_name_field"
                 android:selectAllOnFocus="false"
                 android:singleLine="false"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -63,14 +67,15 @@
                 android:hint="@string/scooter_location_field" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/Button"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:background="@drawable/button"
-            android:text="@string/start_update_button" />
+            android:text="@string/start_update_button"
+            android:layout_gravity="end"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
