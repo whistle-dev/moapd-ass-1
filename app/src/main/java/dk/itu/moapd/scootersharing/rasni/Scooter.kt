@@ -1,5 +1,8 @@
 package dk.itu.moapd.scootersharing.rasni
 
+import android.icu.text.SimpleDateFormat
+import java.util.*
+
 data class Scooter(
     //TODO: name should be val?
     var name: String,
@@ -11,6 +14,7 @@ data class Scooter(
     }
 
     fun getTimestamp(): String {
+        val timestamp = SimpleDateFormat("dd/MM/yyyy HH:mm").format(Date(timestamp))
         return timestamp.toString()
     }
 

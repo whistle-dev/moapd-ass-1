@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".`MainActivity.kt`">
+    tools:context=".MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,6 +60,7 @@
             app:icon="@drawable/baseline_edit_24"
             app:iconGravity="textStart"/>
 
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/list_rides"
             style="@style/Widget.AppCompat.Button"
@@ -72,6 +74,16 @@
             android:textAlignment="center"
             app:icon="@drawable/baseline_list_24"
             app:iconGravity="textStart" />
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
+            android:headerDividersEnabled="false"
+            android:paddingTop="25dp"
+            android:visibility="gone" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

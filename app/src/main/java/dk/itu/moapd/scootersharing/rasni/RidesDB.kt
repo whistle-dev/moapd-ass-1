@@ -1,8 +1,8 @@
 package dk.itu.moapd.scootersharing.rasni
 
 import android.content.Context
-import java.util.Random
-import kotlin.collections.ArrayList
+import android.icu.text.SimpleDateFormat
+import java.util.*
 
 class RidesDB private constructor(context: Context) {
     private val rides = ArrayList<Scooter>()
@@ -19,6 +19,9 @@ class RidesDB private constructor(context: Context) {
         rides.add(
             Scooter(" CPH003 ", " Lufthavn ", randomDate())
         )
+        rides.add(
+            Scooter(" CPH004 ", " Lucas' mor ", randomDate())
+        )
         // TODO : You can add more ‘Scooter ‘ objects if you want to.
     }
 
@@ -26,13 +29,13 @@ class RidesDB private constructor(context: Context) {
         return rides
     }
 
-    fun addScooter(name: String, location: String) {
-        rides.add(Scooter(name, location))
+    fun addScooter(name: String, location: String, timestamp: Long) {
+        rides.add(Scooter(name, location, timestamp))
     }
 
     fun updateCurrentScooter(location: String, timestamp: Long) {
-        rides[rides.size - 1].location = location
-        rides[rides.size - 1].timestamp = timestamp
+        getCurrentScooter().location = location
+        getCurrentScooter().timestamp = timestamp
     }
 
     fun getCurrentScooter(): Scooter {
@@ -40,7 +43,7 @@ class RidesDB private constructor(context: Context) {
     }
 
     fun getCurrentScooterInfo(): String {
-        return rides[rides.size - 1].toString()
+        return getCurrentScooter().toString()
     }
 
     /**
@@ -52,7 +55,7 @@ class RidesDB private constructor(context: Context) {
         val random = Random()
         val now = System.currentTimeMillis()
         val year = random.nextDouble() * 1000 * 60 * 60 * 24 * 365
-        return (now - year).toLong()
+        return now - year.toLong()
     }
 }
 

@@ -2,6 +2,7 @@ package dk.itu.moapd.scootersharing.rasni
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
     // The binding object instance that is associated with this activity.
     private lateinit var mainBinding: ActivityMainBinding
 
+    // Listview for rides
+    private lateinit var listView: android.widget.ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -32,7 +35,11 @@ class MainActivity : AppCompatActivity() {
         // Initialize the binding object instance associated with this activity.
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
 
+        // Get a reference to the ListView in the layout with binding
+        listView = mainBinding.listView
 
+        // Create an adapter for the ListView
+        listView.adapter = CustomArrayAdapter(this, R.layout.list_ride_item, ridesDB.getRidesList())
 
         with(mainBinding) {
             // Start ride click event
@@ -47,8 +54,14 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             listRides.setOnClickListener {
+                mainBinding.listRides.setOnClickListener {
 
-                //TODO: list rides in a listview when pressed
+                    if (listView.visibility == View.GONE){
+                        listView.visibility = View.VISIBLE
+                    }else{
+                        listView.visibility = View.GONE
+                    }
+                }
             }
         }
 

@@ -48,15 +48,18 @@ class StartRideActivity : AppCompatActivity() {
                     // Update the object attributes
                     val name = ScooterName.text.toString().trim()
                     val location = ScooterLocation.text.toString().trim()
+                    val timestamp = System.currentTimeMillis()
+
+                    ridesDB.addScooter(name, location, timestamp)
 
                     scooter.name = name
                     scooter.location = location
 
+                    showMessage()
+
                     // Reset the text fields and update the UI.
                     ScooterName.text!!.clear()
                     ScooterLocation.text!!.clear()
-
-                    showMessage()
                 }
             }
         }

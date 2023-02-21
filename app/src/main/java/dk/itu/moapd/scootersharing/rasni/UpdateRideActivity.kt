@@ -39,6 +39,11 @@ class UpdateRideActivity : AppCompatActivity() {
         val view = mainBinding.root
         setContentView(view)
 
+        // Update the object attributes
+        val currentScooter = ridesDB.getCurrentScooter()
+        mainBinding.ScooterName.setText(currentScooter.name)
+        mainBinding.ScooterLocation.setText(currentScooter.location)
+
 
 
 
@@ -47,15 +52,13 @@ class UpdateRideActivity : AppCompatActivity() {
                 if (ScooterName.text!!.isNotEmpty() && ScooterLocation.text!!.isNotEmpty()) {
 
                     // Update the object attributes
-                    val name = ScooterName.text.toString().trim()
                     val location = ScooterLocation.text.toString().trim()
 
-                    scooter.name = name
+                    scooter.name = ScooterName.text.toString().trim()
                     scooter.location = location
+                    scooter.timestamp = System.currentTimeMillis()
 
-                    // Reset the text fields and update the UI.
-                    ScooterName.text!!.clear()
-                    ScooterLocation.text!!.clear()
+                    ridesDB.updateCurrentScooter(scooter.location, scooter.timestamp)
 
                     showMessage()
                 }
