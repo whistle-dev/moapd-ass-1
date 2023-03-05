@@ -16,58 +16,13 @@ class MainActivity : AppCompatActivity() {
         lateinit var ridesDB: RidesDB
     }
 
-    // GUI variables .
-    private val scooter: Scooter = Scooter("", "")
-
-    // The binding object instance that is associated with this activity.
-    private lateinit var mainBinding: ActivityMainBinding
-
-    // Listview for rides
-    private lateinit var listView: android.widget.ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        // Singleton to share an object between the app activities .
-        ridesDB = RidesDB.get(this)
-
-        // Initialize the binding object instance associated with this activity.
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-
-        // Get a reference to the ListView in the layout with binding
-        listView = mainBinding.listView
-
-        // Create an adapter for the ListView
-        listView.adapter = CustomArrayAdapter(this, R.layout.list_ride_item, ridesDB.getRidesList())
-
-        with(mainBinding) {
-            // Start ride click event
-            startRide.setOnClickListener {
-                val intent = Intent(this@MainActivity, StartRideActivity::class.java.apply {
-                    intent.putExtra("scooter", "scooter")
-                })
-                startActivity(intent)
-            }
-            updateRide.setOnClickListener {
-                val intent = Intent(this@MainActivity, UpdateRideActivity::class.java)
-                startActivity(intent)
-            }
-            listRides.setOnClickListener {
-                mainBinding.listRides.setOnClickListener {
-
-                    if (listView.visibility == View.GONE){
-                        listView.visibility = View.VISIBLE
-                    }else{
-                        listView.visibility = View.GONE
-                    }
-                }
-            }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, MainFragment())
+            .commit()
         }
-
-        val view = mainBinding.root
-        setContentView(view)
-
-    }
-
 }

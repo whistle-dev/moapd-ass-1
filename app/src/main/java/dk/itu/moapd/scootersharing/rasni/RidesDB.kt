@@ -19,9 +19,6 @@ class RidesDB private constructor(context: Context) {
         rides.add(
             Scooter(" CPH003 ", " Lufthavn ", randomDate())
         )
-        rides.add(
-            Scooter(" CPH004 ", " Lucas' mor ", randomDate())
-        )
         // TODO : You can add more ‘Scooter ‘ objects if you want to.
     }
 

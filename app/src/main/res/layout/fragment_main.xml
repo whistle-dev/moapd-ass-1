@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
-
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,21 +27,21 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:text="Scooter Sharing"
             android:textAlignment="center"
-            android:textSize="30sp"
-            android:layout_margin="20dp" />
+            android:textSize="30sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/start_ride"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:text="@string/start_ride_button"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="60dp"
-            android:layout_marginStart="60dp"
+            android:background="@drawable/button"
+            android:text="@string/start_ride_button"
             app:icon="@drawable/baseline_play_arrow_24"
             app:iconGravity="textStart" />
 
@@ -51,14 +50,14 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"
-            android:text="@string/start_update_button"
+            android:layout_marginStart="60dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="60dp"
-            android:layout_marginStart="60dp"
+            android:background="@drawable/button"
+            android:text="@string/start_update_button"
             android:textAlignment="center"
             app:icon="@drawable/baseline_edit_24"
-            app:iconGravity="textStart"/>
+            app:iconGravity="textStart" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -70,15 +69,16 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="80dp"
             android:background="@drawable/button"
-            android:text="@string/list_rides_button"
+            android:text="@string/show_list_rides_button"
             android:textAlignment="center"
-            app:icon="@drawable/baseline_list_24"
-            app:iconGravity="textStart" />
+            app:icon="@drawable/baseline_arrow_drop_down_24"
+            app:iconGravity="textStart"
+            app:iconSize="80px" />
 
         <ListView
             android:id="@+id/list_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:divider="@android:color/transparent"
             android:dividerHeight="10dp"
             android:headerDividersEnabled="false"

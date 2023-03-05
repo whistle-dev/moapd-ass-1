@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 
 class CustomArrayAdapter(context: Context, private var resource: Int,
                          data: List<Scooter>) :
-    ArrayAdapter<Scooter>(context, R.layout.list_ride_item, data)
-{
+    ArrayAdapter<Scooter>(context, R.layout.list_ride_item, data) {
     private class ViewHolder(view: View) {
         val name: TextView = view.findViewById(R.id.name)
         val location: TextView = view.findViewById(R.id.location)
