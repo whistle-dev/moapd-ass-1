@@ -7,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
  * The main activity used on startup of app
  *
  * This class uses the starts with the fragment MainFragment
- *
  */
 class MainActivity : AppCompatActivity() {
 
     /**
-     * override of onCreate
+     * Override of onCreate
+     *
      * Sets up the contentView and sets up the MainFragment with a transaction
      */
     override fun onCreate(savedInstanceState: Bundle?) {
