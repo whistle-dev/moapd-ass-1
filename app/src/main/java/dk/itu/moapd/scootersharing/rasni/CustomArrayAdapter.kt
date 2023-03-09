@@ -17,14 +17,12 @@ class CustomArrayAdapter(context: Context, private var resource: Int,
         val timestamp: TextView = view.findViewById(R.id.timestamp)
     }
 
-
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
 
         var view = convertView
         val viewHolder: ViewHolder
 
-        if ( view == null ) {
+        if (view == null) {
             val inflater = LayoutInflater.from(context)
             view = inflater.inflate(resource, parent, false)
             viewHolder = ViewHolder(view)

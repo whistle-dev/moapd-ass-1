@@ -1,22 +1,20 @@
 package dk.itu.moapd.scootersharing.rasni
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import dk.itu.moapd.scootersharing.rasni.databinding.ActivityMainBinding
 
-
+/**
+ * The main activity used on startup of app
+ *
+ * This class uses the starts with the fragment MainFragment
+ */
 class MainActivity : AppCompatActivity() {
-    // A set of private constants used in this class .
-    companion object {
-        private val TAG = MainActivity::class.qualifiedName
-        lateinit var ridesDB: RidesDB
-    }
 
-
+    /**
+     * Override of onCreate
+     *
+     * Sets up the contentView and sets up the MainFragment with a transaction
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,4 +23,5 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container, MainFragment())
             .commit()
         }
+
 }

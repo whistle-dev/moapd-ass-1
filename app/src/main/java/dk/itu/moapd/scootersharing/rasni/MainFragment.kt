@@ -1,6 +1,5 @@
 package dk.itu.moapd.scootersharing.rasni
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +22,7 @@ import dk.itu.moapd.scootersharing.rasni.databinding.FragmentMainBinding
  */
 
 class MainFragment : Fragment() {
+
     // A set of private constants used in this class .
     companion object {
         private val TAG = MainFragment::class.qualifiedName
@@ -132,4 +132,5 @@ class MainFragment : Fragment() {
             }
         }
     }
+
 }
