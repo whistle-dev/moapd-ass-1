@@ -14,9 +14,9 @@ import com.google.android.material.textfield.TextInputEditText
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentUpdateRideBinding
 
 class UpdateRideFragment : Fragment() {
+
     // A set of private constants used in this class .
     companion object {
-        private val TAG = UpdateRideFragment::class.qualifiedName
         lateinit var ridesDB: RidesDB
     }
 
@@ -104,7 +104,6 @@ class UpdateRideFragment : Fragment() {
             root.setOnTouchListener { _, event -> gestureDetector.onTouchEvent(event) }
         }
     }
-
 
     // Print a message in the ‘Logcat ‘ system
     private fun showMessage() {
