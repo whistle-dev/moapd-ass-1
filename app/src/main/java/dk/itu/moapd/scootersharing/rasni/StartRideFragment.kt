@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentStartRideBinding
 
 class StartRideFragment : Fragment() {
+
     companion object {
         lateinit var ridesDB: RidesDB
     }
@@ -40,7 +41,7 @@ class StartRideFragment : Fragment() {
             }
 
             override fun onSingleTapUp(e: MotionEvent): Boolean {
-                // Hide the keyboard when the user taps outside of an EditText.
+                // Hide the keyboard when the user taps outside of an EditText. (from stackoverflow)
                 val focusView = requireActivity().currentFocus
                 if (focusView != null) {
                     val rect = Rect()

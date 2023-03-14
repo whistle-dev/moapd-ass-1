@@ -4,7 +4,7 @@ import android.icu.text.SimpleDateFormat
 import java.util.*
 
 data class Scooter(
-    //TODO: name should be val?
+
     var name: String,
     var location: String,
     var timestamp: Long = System.currentTimeMillis()
