@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentMainBinding
 /**
 
@@ -37,8 +39,8 @@ class MainFragment : Fragment() {
     // The binding object instance that is associated with this activity.
     private lateinit var mainBinding: FragmentMainBinding
 
-    // Listview for rides
-    private lateinit var listView: android.widget.ListView
+    // RecyclerView for rides
+    private lateinit var recyclerView: RecyclerView
 
 
     /**
@@ -72,12 +74,16 @@ class MainFragment : Fragment() {
     ): View? {
         mainBinding = FragmentMainBinding.inflate(inflater, container, false)
 
-        // Get a reference to the ListView in the layout with binding
-        listView = mainBinding.listView
+        // Get a reference to the RecyclerView in the layout with binding
+        recyclerView = mainBinding.recyclerView
 
-        // Create an adapter for the ListView
-        listView.adapter =
-            CustomArrayAdapter(requireContext(), R.layout.list_ride_item, ridesDB.getRidesList())
+        // Create an adapter for the RecyclerView
+        val adapter = CustomArrayAdapter(ridesDB.getRidesList())
+        recyclerView.adapter = adapter
+
+        // Set the layout manager for the RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
 
         return mainBinding.root
     }
@@ -110,8 +116,8 @@ class MainFragment : Fragment() {
                     .commit()
             }
             listRides.setOnClickListener {
-                if (listView.visibility == View.GONE) {
-                    listView.visibility = View.VISIBLE
+                if (recyclerView.visibility == View.GONE) {
+                    recyclerView.visibility = View.VISIBLE
                     listRides.text = "HIDE RIDES"
                     listRides.iconSize = 80
                     listRides.textSize = 14F
@@ -120,7 +126,7 @@ class MainFragment : Fragment() {
                         R.drawable.baseline_arrow_drop_up_24
                     )
                 } else {
-                    listView.visibility = View.GONE
+                    recyclerView.visibility = View.GONE
                     listRides.text = "SHOW RIDES"
                     listRides.iconSize = 80
                     listRides.textSize = 14F

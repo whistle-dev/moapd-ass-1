@@ -70,6 +70,9 @@ class StartRideFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Prefill the ScooterName with the next available scooter name. (If the current is CPH004, the next will be CPH005.)
+        mainBinding.ScooterName.setText("CPH${String.format("%03d", ridesDB.getRidesList().size + 1)}")
+
         mainBinding.apply {
             Button.setOnClickListener {
                 if (ScooterName.text!!.isNotEmpty() && ScooterLocation.text!!.isNotEmpty()) {
