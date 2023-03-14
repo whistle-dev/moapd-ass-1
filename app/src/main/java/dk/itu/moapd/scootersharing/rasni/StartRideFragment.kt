@@ -13,7 +13,6 @@ import dk.itu.moapd.scootersharing.rasni.databinding.FragmentStartRideBinding
 
 class StartRideFragment : Fragment() {
     companion object {
-        private val TAG = StartRideFragment::class.qualifiedName
         lateinit var ridesDB: RidesDB
     }
 
@@ -69,6 +68,9 @@ class StartRideFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Prefill the ScooterName with the next available scooter name. (If the current is CPH004, the next will be CPH005.)
+        mainBinding.ScooterName.setText("CPH${String.format("%03d", ridesDB.getRidesList().size + 1)}")
 
         mainBinding.apply {
             Button.setOnClickListener {
