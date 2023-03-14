@@ -10,7 +10,7 @@ import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import dk.itu.moapd.scootersharing.rasni.MainActivity.Companion.ridesDB
+import dk.itu.moapd.scootersharing.rasni.MainFragment.Companion.ridesDB
 
 class CustomArrayAdapter(private val data: List<Scooter>) :
     RecyclerView.Adapter<CustomArrayAdapter.ViewHolder>() {
