@@ -1,4 +1,4 @@
-package dk.itu.moapd.scootersharing.rasni
+package dk.itu.moapd.scootersharing.rasni.model
 
 import android.icu.text.SimpleDateFormat
 import java.util.*

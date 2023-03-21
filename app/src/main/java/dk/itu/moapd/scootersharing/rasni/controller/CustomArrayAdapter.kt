@@ -1,16 +1,15 @@
-package dk.itu.moapd.scootersharing.rasni
+package dk.itu.moapd.scootersharing.rasni.controller
 
 import android.app.AlertDialog
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
-import dk.itu.moapd.scootersharing.rasni.MainFragment.Companion.ridesDB
+import dk.itu.moapd.scootersharing.rasni.R
+import dk.itu.moapd.scootersharing.rasni.RidesDB
+import dk.itu.moapd.scootersharing.rasni.controller.MainFragment.Companion.ridesDB
+import dk.itu.moapd.scootersharing.rasni.model.Scooter
 
 class CustomArrayAdapter(private val data: List<Scooter>) :
     RecyclerView.Adapter<CustomArrayAdapter.ViewHolder>() {

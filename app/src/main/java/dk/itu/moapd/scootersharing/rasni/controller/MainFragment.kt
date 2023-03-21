@@ -1,4 +1,4 @@
-package dk.itu.moapd.scootersharing.rasni
+package dk.itu.moapd.scootersharing.rasni.controller
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,10 @@ import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dk.itu.moapd.scootersharing.rasni.*
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentMainBinding
+import dk.itu.moapd.scootersharing.rasni.model.Scooter
+
 /**
 
 * This class represents the main fragment of the Scooter Sharing app. It displays a list of rides

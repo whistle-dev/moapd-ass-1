@@ -1,7 +1,7 @@
 package dk.itu.moapd.scootersharing.rasni
 
 import android.content.Context
-import android.icu.text.SimpleDateFormat
+import dk.itu.moapd.scootersharing.rasni.model.Scooter
 import java.util.*
 
 class RidesDB private constructor(context: Context) {
