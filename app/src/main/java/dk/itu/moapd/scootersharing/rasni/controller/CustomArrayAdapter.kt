@@ -35,7 +35,7 @@ class CustomArrayAdapter(private val data: List<Scooter>) :
 
         holder.name.text = scooter.name
         holder.location.text = scooter.location
-        holder.timestamp.text = scooter.getTimestamp()
+        holder.timestamp.text = scooter.formattedTimestamp()
         holder.delete.setOnClickListener {
             //open a dialog to confirm delete ride
             AlertDialog.Builder(holder.itemView.context)

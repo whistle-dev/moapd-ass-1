@@ -1,42 +1,63 @@
 package dk.itu.moapd.scootersharing.rasni
 
 import android.content.Context
+import android.icu.text.SimpleDateFormat
+import android.util.Log
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import dk.itu.moapd.scootersharing.rasni.model.Scooter
 import java.util.*
 
 class RidesDB(context: Context) {
     private val rides = ArrayList<Scooter>()
 
+    private val ridesRef = FirebaseDatabase.getInstance("https://scootersharing-c2eb4-default-rtdb.europe-west1.firebasedatabase.app").getReference("rides")
+
     companion object : RidesDBHolder<RidesDB, Context>(::RidesDB)
 
     init {
-        rides.add(
-            Scooter(" CPH001 ", "ITU ", randomDate())
-        )
-        rides.add(
-            Scooter(" CPH002 ", " Fields ", randomDate())
-        )
-        rides.add(
-            Scooter(" CPH003 ", " Lufthavn ", randomDate())
-        )
+        ridesRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val updatedRides = ArrayList<Scooter>()
+                for (child in snapshot.children) {
+                    val scooter = child.getValue(Scooter::class.java) ?: continue
+                    scooter.id = child.key ?: continue
+                    updatedRides.add(scooter)
+                }
+                rides.clear()
+                rides.addAll(updatedRides)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle cancelled event
+                Log.e("RidesDB", "Failed to retrieve ride IDs from database", error.toException())
+            }
+        })
     }
+
 
     fun getRidesList(): List<Scooter> {
         return rides
     }
 
     fun addScooter(name: String, location: String, timestamp: Long) {
-        rides.add(Scooter(name, location, timestamp))
+        val key = ridesRef.push().key ?: return
+        ridesRef.child(key).setValue(Scooter(name, location, timestamp))
     }
 
     fun deleteScooter(name: String) {
-        rides.removeIf { it.name == name }
+        val scooter = rides.find { it.name == name } ?: return
+        ridesRef.child(scooter.id).removeValue()
     }
 
     fun updateCurrentScooter(location: String, timestamp: Long) {
-        getCurrentScooter().location = location
-        getCurrentScooter().timestamp = timestamp
+        val scooter = getCurrentScooter()
+        ridesRef.child(scooter.id).child("location").setValue(location)
+        ridesRef.child(scooter.id).child("timestamp").setValue(timestamp)
     }
+
 
     fun getCurrentScooter(): Scooter {
         return rides[rides.size - 1]
