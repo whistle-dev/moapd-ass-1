@@ -4,7 +4,7 @@ import android.content.Context
 import dk.itu.moapd.scootersharing.rasni.model.Scooter
 import java.util.*
 
-class RidesDB private constructor(context: Context) {
+class RidesDB(context: Context) {
     private val rides = ArrayList<Scooter>()
 
     companion object : RidesDBHolder<RidesDB, Context>(::RidesDB)

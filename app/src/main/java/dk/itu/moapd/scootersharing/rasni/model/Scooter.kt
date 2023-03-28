@@ -7,7 +7,8 @@ data class Scooter(
 
     var name: String,
     var location: String,
-    var timestamp: Long = System.currentTimeMillis()
+    var timestamp: Long = System.currentTimeMillis(),
+    var key: String = ""
 ) {
     override fun toString(): String {
         return "[Scooter] $name is placed at $location ."

@@ -72,6 +72,8 @@ class RegisterFragment : Fragment() {
                     val user = auth.currentUser
                     updateUI(user)
                     continueToMain()
+                    Toast.makeText(context, "Account created.",
+                        Toast.LENGTH_SHORT).show()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)

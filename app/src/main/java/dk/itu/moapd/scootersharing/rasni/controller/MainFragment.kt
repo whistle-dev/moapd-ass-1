@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import dk.itu.moapd.scootersharing.rasni.*
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentMainBinding
 import dk.itu.moapd.scootersharing.rasni.model.Scooter
@@ -31,6 +33,7 @@ class MainFragment : Fragment() {
     // A set of private constants used in this class .
     companion object {
         private val TAG = MainFragment::class.qualifiedName
+        private lateinit var auth: FirebaseAuth
 
         // Singleton to share an object between the app activities .
         lateinit var ridesDB: RidesDB
@@ -138,6 +141,17 @@ class MainFragment : Fragment() {
                         R.drawable.baseline_arrow_drop_down_24
                     )
                 }
+            }
+            logout.setOnClickListener {
+                auth = FirebaseAuth.getInstance()
+                auth.signOut()
+                val fragment = WelcomeFragment()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
+                    .commit()
+                Toast.makeText(requireContext(), "Logged out", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
