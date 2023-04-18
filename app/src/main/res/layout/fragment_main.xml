@@ -34,7 +34,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/start_ride"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -47,7 +46,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/update_ride"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="60dp"
@@ -62,7 +60,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/list_rides"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
@@ -89,7 +86,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/logout"
-            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
@@ -103,4 +99,5 @@
             app:iconTint="@color/black" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

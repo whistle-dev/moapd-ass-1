@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_start_ride"
+        android:icon="@drawable/baseline_play_arrow_24"
+        android:title="Start Ride"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menu_update_ride"
+        android:icon="@drawable/baseline_arrow_drop_up_24"
+        android:title="Update Ride"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_history"
+        android:icon="@drawable/baseline_arrow_drop_down_24"
+        android:title="History"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menu_profile"
+        android:icon="@drawable/baseline_list_24"
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
+</menu>
