@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dk.itu.moapd.scootersharing.rasni.R
 import dk.itu.moapd.scootersharing.rasni.databinding.FragmentWelcomeBinding
 

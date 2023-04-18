@@ -2,23 +2,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_start_ride"
+        android:id="@+id/menu_home"
         android:icon="@drawable/baseline_play_arrow_24"
         android:title="Start Ride"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menu_update_ride"
+        android:id="@+id/menu_start_ride"
         android:icon="@drawable/baseline_arrow_drop_up_24"
         android:title="Update Ride"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_history"
+        android:id="@+id/menu_update_ride"
         android:icon="@drawable/baseline_arrow_drop_down_24"
         android:title="History"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_profile"
+        android:id="@+id/menu_setting"
         android:icon="@drawable/baseline_list_24"
         android:title="Settings"
         app:showAsAction="ifRoom" />
